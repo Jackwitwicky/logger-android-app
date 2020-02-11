@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Logger</string>
+    <string name="preference_file_key">com.jacknkiarie.logger.preference_key</string>
+    <string name="saved_app_id_key">APP_ID</string>
+</resources>
