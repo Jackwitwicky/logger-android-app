@@ -17,6 +17,9 @@ import android.util.Log
 import com.android.volley.Request
 import com.android.volley.Response
 import org.json.JSONObject
+import com.android.volley.DefaultRetryPolicy
+
+
 
 
 class SplashActivity : AppCompatActivity() {
@@ -148,6 +151,13 @@ class SplashActivity : AppCompatActivity() {
                         loading.dismiss()
                     }
                 })
+
+            // increase time out period for the request in case of user network challenges
+            jsonObjectRequest.retryPolicy = DefaultRetryPolicy(
+                10000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+            )
 
             // Access the RequestQueue through your singleton class.
             VolleySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
